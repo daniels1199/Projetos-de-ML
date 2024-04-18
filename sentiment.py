@@ -20,7 +20,7 @@ elif (score['pos'] > score['neu'] or score['pos'] > score['neg']) and score['neg
     st.write('### Thanks!')
 
 
-st.write(score)    
+#st.write(score)    
     
 
 
