@@ -1,4 +1,5 @@
 from deep_translator import GoogleTranslator
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import streamlit as st
 import nltk
 
@@ -7,20 +8,15 @@ user_input = st.text_input('Escreva aqui: ')
 text_t = GoogleTranslator(source='pt', target='en').translate(user_input)
 
 nltk.download('vader_lexicon')
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 analyzer = SentimentIntensityAnalyzer()
 score = analyzer.polarity_scores(text_t)
     
-
-if score['neu'] + score['neg'] > score['pos'] or (score['compound'] < 0.1 and score['compound'] > 0):
-    st.write("### I'm sorry :(")
+if score['neu'] + score['neg'] > score['pos'] and score['neg'] != 0:
+    st.write("### Sentimos muito :(")
 
 elif (score['pos'] > score['neu'] or score['pos'] > score['neg']) and score['neg'] == 0:
-    st.write('### Thanks!')
-
-
-#st.write(score)    
+    st.write('### Nós agradecemos!')    
     
 
 
