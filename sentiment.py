@@ -1,4 +1,4 @@
-from deep_translator import GoogleTranslator
+#from deep_translator import GoogleTranslator
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import streamlit as st
 import nltk
